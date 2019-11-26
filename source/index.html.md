@@ -75,7 +75,7 @@ Kalman SDK allows you to set user level configuration. This is could used to cap
 > Note that if no userID is set, the user is automatically assigned a uuid.
 
 <aside class="notice">
-You must replace <code>MY_API_KEY</code> and <code>MY_APP_ID</code> with your personal API key.
+You must replace <code>MY_API_KEY</code> and <code>MY_APP_ID</code> with your API key and APP ID.
 </aside>
 
 # Track Event
