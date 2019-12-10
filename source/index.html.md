@@ -133,8 +133,8 @@ kalman.trackAdsEvent(
   "unity"
 )
 ```
-Purchase events are used to track information related to monetization of the app.
-When recording a purchase event. You will need to specify the following fields
+Ads events are used to track information related to ads display.
+When recording a ads event. You will need to specify the following fields
 
 Field | Type | Required | Example | Meaning
 ----- | ---- | -------- | ------- | -------
@@ -162,6 +162,9 @@ Kalman.trackProgressionEvent(
   "finished"
 )
 ```
+Level progression events helps you track your player throughout the game.
+While we only support a string as a level, you can track sub_levels by giving a unique name to each sublevel (`level1_part1`)
+
 Field | Type | Required | Example | Meaning
 ----- | ---- | -------- | ------- | -------
 level | string | required | 'level1' | describes the level completion
@@ -186,6 +189,11 @@ props.put("channel", "campaign_32");
 kalman.track("SomeEvent",
   metadata)
 ```
+
+The Kalman SDK provides the ability to report custom events. You can pass to it a list of key/values.
+While you can use custom events to track every event describe below, we recommend to only use custom events for
+events that don't fall in the scope of the previous events. Using custom event makes indexing and building report slower.
+
 Field | Type | Required | Example | Meaning
 ----- | ---- | -------- | ------- | -------
 event | string | required | 'event1' | describes the event you want to track.
