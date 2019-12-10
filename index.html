@@ -249,7 +249,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://developers.kalmanlabs.com'>Sign Up for a Developer Key</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -289,6 +289,14 @@ Contact support@kalmanlabs.com for more details if you need help setting up your
 <span class="n">JSONObject</span> <span class="n">props</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSONObject</span><span class="o">();</span>
 <span class="n">props</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"channel"</span><span class="o">,</span> <span class="s">"campaign_32"</span><span class="o">);</span>
 <span class="n">kalman</span><span class="o">.</span><span class="na">registerSuperProperties</span><span class="o">(</span><span class="n">props</span><span class="o">);</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="c1">// Associate all future events sent from</span>
+<span class="c1">// the library with the distinct_id 12345</span>
+<span class="n">Kalman</span><span class="p">.</span><span class="nf">Identify</span><span class="p">(</span><span class="err">'</span><span class="m">12345</span><span class="err">'</span><span class="p">);</span>
+<span class="c1">// Sets user 12345's "Plan" attribute to "Premium"</span>
+<span class="n">Kalman</span><span class="p">.</span><span class="n">People</span><span class="p">.</span><span class="nf">Set</span><span class="p">(</span><span class="s">"Plan"</span><span class="p">,</span> <span class="s">"Premium"</span><span class="p">);</span>
+<span class="c1">// Here we increment the user's point count by 500.</span>
+<span class="n">Kalman</span><span class="p">.</span><span class="n">People</span><span class="p">.</span><span class="nf">Increment</span><span class="p">(</span><span class="s">"point count"</span><span class="p">,</span> <span class="m">500</span><span class="p">);</span>
+
 </code></pre>
 <p>Kalman SDK allows you to set user level configuration. This is could used to capture channel of acquisition or some in game characteristics.</p>
 
@@ -316,6 +324,12 @@ You must replace <code>MY_API_KEY</code> and <code>MY_APP_ID</code> with your AP
   <span class="s">"gems"</span><span class="o">,</span>
   <span class="mi">20</span>
 <span class="o">)</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">props</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Value</span><span class="p">();</span>
+<span class="n">props</span><span class="p">[</span><span class="s">"currency"</span><span class="p">]</span> <span class="p">=</span> <span class="s">"USD"</span><span class="p">;</span>
+<span class="n">props</span><span class="p">[</span><span class="s">"amount"</span><span class="p">]</span> <span class="p">=</span> <span class="m">999</span><span class="p">;</span>
+<span class="n">props</span><span class="p">[</span><span class="s">"itemID"</span><span class="p">]</span> <span class="p">=</span> <span class="s">"gems"</span><span class="p">;</span>
+<span class="n">props</span><span class="p">[</span><span class="s">"quantity"</span><span class="p">]</span> <span class="p">=</span> <span class="m">20</span><span class="p">;</span>
+<span class="n">Kalman</span><span class="p">.</span><span class="nf">trackPurchase</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
 </code></pre>
 <p>Purchase events are used to track information related to monetization of the app.
 When recording a purchase event. You will need to specify the following fields</p>
@@ -369,6 +383,10 @@ When recording a purchase event. You will need to specify the following fields</
   <span class="s">"rewarded_video"</span><span class="o">,</span>
   <span class="s">"unity"</span>
 <span class="o">)</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">props</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Value</span><span class="p">();</span>
+<span class="n">props</span><span class="p">[</span><span class="s">"type"</span><span class="p">]</span> <span class="p">=</span> <span class="s">"rewarded_video"</span><span class="p">;</span>
+<span class="n">props</span><span class="p">[</span><span class="s">"adProvider"</span><span class="p">]</span> <span class="p">=</span> <span class="s">"unity"</span><span class="p">;</span>
+<span class="n">Kalman</span><span class="p">.</span><span class="nf">tackAdsEvent</span><span class="p">(</span><span class="n">props</span><span class="p">);</span>
 </code></pre>
 <p>Ads events are used to track information related to ads display.
 When recording a ads event. You will need to specify the following fields</p>
@@ -415,6 +433,10 @@ When recording a ads event. You will need to specify the following fields</p>
   <span class="s">"level_01_03"</span><span class="o">,</span> 
   <span class="s">"finished"</span>
 <span class="o">)</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">props</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Value</span><span class="p">();</span>
+<span class="n">props</span><span class="p">[</span><span class="s">"level"</span><span class="p">]</span> <span class="p">=</span> <span class="s">"level_01_03"</span><span class="p">;</span>
+<span class="n">props</span><span class="p">[</span><span class="s">"status"</span><span class="p">]</span> <span class="p">=</span> <span class="s">"finished"</span><span class="p">;</span>
+<span class="n">Kalman</span><span class="p">.</span><span class="nf">trackProgressionEventWithLevel</span><span class="p">(</span><span class="n">props</span><span class="p">);</span>
 </code></pre>
 <p>Level progression events helps you track your player throughout the game.
 While we only support a string as a level, you can track sub_levels by giving a unique name to each sublevel (<code>level1_part1</code>)</p>
@@ -453,6 +475,9 @@ While we only support a string as a level, you can track sub_levels by giving a 
 <span class="n">props</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"channel"</span><span class="o">,</span> <span class="s">"campaign_32"</span><span class="o">);</span>
 <span class="n">kalman</span><span class="o">.</span><span class="na">track</span><span class="o">(</span><span class="s">"SomeEvent"</span><span class="o">,</span>
   <span class="n">metadata</span><span class="o">)</span>
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">props</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Value</span><span class="p">();</span>
+<span class="n">props</span><span class="p">[</span><span class="s">"channel"</span><span class="p">]</span> <span class="p">=</span> <span class="s">"campaign_32"</span><span class="p">;</span>
+<span class="n">Kalman</span><span class="p">.</span><span class="nf">track</span><span class="p">(</span><span class="s">"SomeEvent"</span><span class="p">,</span> <span class="n">props</span><span class="p">);</span>
 </code></pre>
 <p>The Kalman SDK provides the ability to report custom events. You can pass to it a list of key/values.
 While you can use custom events to track every event describe below, we recommend to only use custom events for
