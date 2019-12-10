@@ -370,8 +370,8 @@ When recording a purchase event. You will need to specify the following fields</
   <span class="s">"unity"</span>
 <span class="o">)</span>
 </code></pre>
-<p>Purchase events are used to track information related to monetization of the app.
-When recording a purchase event. You will need to specify the following fields</p>
+<p>Ads events are used to track information related to ads display.
+When recording a ads event. You will need to specify the following fields</p>
 
 <table><thead>
 <tr>
@@ -416,6 +416,9 @@ When recording a purchase event. You will need to specify the following fields</
   <span class="s">"finished"</span>
 <span class="o">)</span>
 </code></pre>
+<p>Level progression events helps you track your player throughout the game.
+While we only support a string as a level, you can track sub_levels by giving a unique name to each sublevel (<code>level1_part1</code>)</p>
+
 <table><thead>
 <tr>
 <th>Field</th>
@@ -451,6 +454,10 @@ When recording a purchase event. You will need to specify the following fields</
 <span class="n">kalman</span><span class="o">.</span><span class="na">track</span><span class="o">(</span><span class="s">"SomeEvent"</span><span class="o">,</span>
   <span class="n">metadata</span><span class="o">)</span>
 </code></pre>
+<p>The Kalman SDK provides the ability to report custom events. You can pass to it a list of key/values.
+While you can use custom events to track every event describe below, we recommend to only use custom events for
+events that don&#39;t fall in the scope of the previous events. Using custom event makes indexing and building report slower.</p>
+
 <table><thead>
 <tr>
 <th>Field</th>
