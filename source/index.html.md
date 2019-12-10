@@ -47,6 +47,7 @@ Kalman kalman =
     Kalman.getInstance(context, MY_APP_ID, MY_API_KEY);
 ```
 
+
 > Make sure to replace `MY_API_KEY` with your API key and `MY_APP_ID`.
 
 Kalman Analytics uses API keys and APP ID to allow access to the API. You can register a new Kalman API key at our [developer portal](http://kalmanlabs.com/developers).
@@ -69,6 +70,17 @@ kalman.configureUserId(userID: "1")
 JSONObject props = new JSONObject();
 props.put("channel", "campaign_32");
 kalman.registerSuperProperties(props);
+```
+
+```csharp
+// Associate all future events sent from
+// the library with the distinct_id 12345
+Kalman.Identify('12345');
+// Sets user 12345's "Plan" attribute to "Premium"
+Kalman.People.Set("Plan", "Premium");
+// Here we increment the user's point count by 500.
+Kalman.People.Increment("point count", 500);
+
 ```
 
 Kalman SDK allows you to set user level configuration. This is could used to capture channel of acquisition or some in game characteristics.
@@ -105,6 +117,16 @@ kalman.trackPurchase(
   20
 )
 ```
+
+```csharp
+var props = new Value();
+props["currency"] = "USD";
+props["amount"] = 999;
+props["itemID"] = "gems";
+props["quantity"] = 20;
+Kalman.trackPurchase(props)
+```
+
 Purchase events are used to track information related to monetization of the app.
 When recording a purchase event. You will need to specify the following fields
 
@@ -133,6 +155,13 @@ kalman.trackAdsEvent(
   "unity"
 )
 ```
+```csharp
+var props = new Value();
+props["type"] = "rewarded_video";
+props["adProvider"] = "unity";
+Kalman.tackAdsEvent(props);
+```
+
 Ads events are used to track information related to ads display.
 When recording a ads event. You will need to specify the following fields
 
@@ -162,6 +191,14 @@ Kalman.trackProgressionEvent(
   "finished"
 )
 ```
+
+```csharp
+var props = new Value();
+props["level"] = "level_01_03";
+props["status"] = "finished";
+Kalman.trackProgressionEventWithLevel(props);
+```
+
 Level progression events helps you track your player throughout the game.
 While we only support a string as a level, you can track sub_levels by giving a unique name to each sublevel (`level1_part1`)
 
@@ -188,6 +225,12 @@ JSONObject metadata = new JSONObject();
 props.put("channel", "campaign_32");
 kalman.track("SomeEvent",
   metadata)
+```
+
+```csharp
+var props = new Value();
+props["channel"] = "campaign_32";
+Kalman.track("SomeEvent", props);
 ```
 
 The Kalman SDK provides the ability to report custom events. You can pass to it a list of key/values.
